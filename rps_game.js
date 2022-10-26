@@ -12,33 +12,30 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
 
     //make parameterr case-insensitive
-    let player1 = playerSelection.toLowerCase()
-    let player2 = computerSelection.toLowerCase()
+    let playerSelection = playerSelection.toLowerCase()
+    let computerSelection = computerSelection.toLowerCase()
     
-    let result;
     let outcome;
 
     //play a single round
+    //return a string that declares the winner
     //rock beats scissors 1-3
     //paper beats rock 2-1
     //scissors beat paper 3-2
 
-    outcome = weapon.indexOf(player1) - weapon.indexOf(player2)
+    outcome = weapon.indexOf(playerSelection) - weapon.indexOf(computerSelection)
     if (outcome < 0) {
         outcome += 3;
     }
     if (outcome == 1) {
-        result = `You win! ${player1} beats ${player2}`
+        return `You win! ${playerSelection} beats ${computerSelection}`
     }
     else if (outcome == 2) {
-        result = `You lose! ${player2} beats ${player1}`
+        return `You lose! ${computerSelection} beats ${playerSelection}`
     }
     else {
-        result = `It's a tie! ${player2} same as ${player1}`
+        return `It's a tie! ${computerSelection} same as ${playerSelection}`
     }
-
-    //return a string that declares the winner
-    return result;
 }
 
 function game() {
