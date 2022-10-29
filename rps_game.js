@@ -3,19 +3,16 @@ let weapon = [
 ];
 
 function getComputerChoice() {
-    //return random choice of 'Rock', 'Paper', or 'Scissors'
+    //return random choice of 'rock', 'paper', or 'scissors'
     let choice = weapon[Math.floor(Math.random() * 3)];
-    console.log("Computer chooses " + choice)
     return choice;
 }
 
 function playRound(playerSelection, computerSelection) {
 
-    //make parameterr case-insensitive
-    let playerSelection = playerSelection.toLowerCase()
-    let computerSelection = computerSelection.toLowerCase()
-    
-    let outcome;
+    //make parameter case-insensitive
+    playerSelection = playerSelection.toLowerCase()
+    computerSelection = computerSelection.toLowerCase()
 
     //play a single round
     //return a string that declares the winner
@@ -23,27 +20,41 @@ function playRound(playerSelection, computerSelection) {
     //paper beats rock 2-1
     //scissors beat paper 3-2
 
-    outcome = weapon.indexOf(playerSelection) - weapon.indexOf(computerSelection)
+    let outcome = weapon.indexOf(playerSelection) - weapon.indexOf(computerSelection)
     if (outcome < 0) {
         outcome += 3;
     }
-    if (outcome == 1) {
+    if (outcome == 1) { // player wins
         return `You win! ${playerSelection} beats ${computerSelection}`
     }
-    else if (outcome == 2) {
+    else if (outcome == 2) { // computer wins
         return `You lose! ${computerSelection} beats ${playerSelection}`
     }
-    else {
-        return `It's a tie! ${computerSelection} same as ${playerSelection}`
+    else { // draw
+        return `It's a tie! Both chose ${playerSelection}`
     }
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("Choose: ");
+
+    const btns = document.querySelectorAll('button');
+
+    const scoreboard = document.querySelector('#scoreboard');
+    const announce = document.createElement('h2');
+    const result = document.createElement('h1');
+    scoreboard.appendChild(announce);
+    announce.innerText = "Let's play!";
+    scoreboard.appendChild(result);
+
+    btns.forEach(button => button.addEventListener('click', function () {
+        const playerSelection = button.id;
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-    }
+        announce.innerText = 'Computer chooses ' + computerSelection;
+        result.style.color = 'red';
+        result.innerText = playRound(playerSelection, computerSelection);
+
+    }));
+
 }
 
 game()
