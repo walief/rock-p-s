@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+<style>
+    #announcements {
+        height: 100px;
+    }
+    #header {
+        height: 50px;
+    }
+    #score-display {
+        height: 50px;
+    }
+</style>
+
 <body>
 
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-    
-    <div id="scoreboard"></div>
+    <div id="container">
+
+        <div id="scoreboard">
+
+            <div id="header">Rock-Paper-Scissors!</div>
+            <div id="announcements">...</div>
+            <div id="score-display">...</div>
+
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+
+        </div>
+
+
+    </div>
 
     <script src="rps_game.js"></script>
 
 </body>
+
 </html>
