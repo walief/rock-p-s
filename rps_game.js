@@ -16,10 +16,8 @@ function playRound(playerSelection, computerSelection) {
 
     //play a single round
     //return a string that declares the winner
-    //rock beats scissors 1-3
-    //paper beats rock 2-1
-    //scissors beat paper 3-2
-
+    
+    //use modulo math to determine the winner
     let outcome = (weapon.indexOf(playerSelection) - weapon.indexOf(computerSelection));
     if (outcome < 0) {
         outcome += 3;
