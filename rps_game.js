@@ -3,29 +3,24 @@ let weapon = [
 ];
 
 function getComputerChoice() {
-    //return random choice of 'rock', 'paper', or 'scissors'
     let choice = weapon[Math.floor(Math.random() * 3)];
     return choice;
 }
 
 function playRound(playerSelection, computerSelection) {
 
-    //make parameter case-insensitive
     playerSelection = playerSelection.toLowerCase()
     computerSelection = computerSelection.toLowerCase()
 
-    //play a single round
-    //return a string that declares the winner
-    
     //use modulo math to determine the winner
     let outcome = (weapon.indexOf(playerSelection) - weapon.indexOf(computerSelection));
     if (outcome < 0) {
         outcome += 3;
     }
-    if (outcome == 1) { // battle outcomes are cyclic - player had the superior weapon (+1)
+    if (outcome == 1) {
         return 'player wins';
     }
-    else if (outcome == 2) { // same as -1 (mod 3) - player had the lesser weapon
+    else if (outcome == 2) {
         return 'computer wins';
     }
     else {
